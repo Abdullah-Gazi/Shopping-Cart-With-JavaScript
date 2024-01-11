@@ -1,0 +1,96 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:0;
+    padding:0;
+}
+body{
+    background-color:#f3f3f3;
+}
+.ipnone11Element1 .phone1{
+    width:100px;
+}
+.container1{
+    display: flex;
+    justify-content: center;
+}
+
+.ipnone11Element1{
+    width:500px;
+    background-color:white;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    padding:10px 10px;
+    margin-top:50px;
+    border-radius:3px;
+    box-shadow: 0 0 2px gray;
+}
+.countDigit1{
+    padding-left:15px;
+    padding-right:15px;
+    border-radius:3px;
+    background-color:#f3f3f3;
+}
+
+
+.ipnone11Element2 .phone2{
+    width:100px;
+}
+.container2{
+    display: flex;
+    justify-content: center;
+}
+
+.ipnone11Element2{
+    width:500px;
+    background-color:white;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    padding:10px 10px;
+    margin-top:0px;
+    border-radius:3px;
+    box-shadow: 0 0 2px gray;
+}
+.countDigit2{
+    padding-left:15px;
+    padding-right:15px;
+    border-radius:3px;
+    background-color:#f3f3f3;
+}
+/* memo */
+.container3{
+    display: flex;
+    justify-content: center;
+}
+.memoElement{
+    width:500px;
+    background-color:white;
+    display:flex;
+    justify-content:;
+    align-items:center;
+    padding:10px 10px;
+    margin-top:0px;
+    border-radius:3px;
+    box-shadow: 0 0 2px gray;
+}
+.subTaxTotal{
+    padding-left:40px;
+}
+.amountOfAll{
+    padding-left:340px;
+}
+.btnCheckout{
+    padding:9px 15px;
+    background-color:rgb(0, 160, 0);
+    border:none;
+    color:white;
+    border-radius:3px;
+    font-weight:500;
+    margin-top:10px;
+    margin-left:856px;
+    box-shadow: 0 0 2px gray;
+}
+.btnCheckout:hover{
+    background-color:rgb(0, 143, 0);
+}
