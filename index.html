@@ -47,64 +47,86 @@
     <button class="btnCheckout">Chekcout</button>
   </body>
 
-  <script>
-    // Original prices
-    const originalPrices = {
-      amountProduct1: 1219,
-      amountProduct2: 1311,
-      // Add more products as needed
-    };
+  <!-- Updated JavaScript code -->
+<script>
+  // Original prices
+  const originalPrices = {
+    amountProduct1: 1219,
+    amountProduct2: 1311,
+  };
 
-    // Update prices based on quantity
-    function updatePrices(id, quantity) {
-      const originalPrice = originalPrices[id];
-      const updatedPrice = originalPrice * quantity;
-      document.getElementById(id).innerHTML = updatedPrice;
-      return updatedPrice;
-    }
+  // Update prices based on quantity
+  function updatePrices(id, quantity) {
+    const originalPrice = originalPrices[id];
+    const updatedPrice = originalPrice * quantity;
+    document.getElementById(id).innerHTML = updatedPrice.toFixed(2);
+    return updatedPrice;
+  }
 
-    // Event listener for quantity increase - Phone 1
-    const countPlus1 = document.getElementById("countPlus1");
-    countPlus1.addEventListener("click", function () {
-      const quantityDigit = textToNumber("countDigit1");
-      const totalQuantity = quantityUpdate(quantityDigit, "countDigit1");
+  // Event listener for quantity increase - Phone 1
+  const countPlus1 = document.getElementById("countPlus1");
+  countPlus1.addEventListener("click", function () {
+    const quantityDigit = textToNumber("countDigit1");
+    const totalQuantity = quantityUpdate(quantityDigit, "countDigit1");
+    const updatedPrice = updatePrices("amountProduct1", totalQuantity);
+    updateSubtotalAndTotal();
+  });
+
+  // Event listener for quantity decrease - Phone 1
+  const countMinus1 = document.getElementById("countMinus1");
+  countMinus1.addEventListener("click", function () {
+    const quantityDigit = textToNumber("countDigit1");
+    if (quantityDigit > 1) {
+      const totalQuantity = quantityUpdate(quantityDigit, "countDigit1", false);
       const updatedPrice = updatePrices("amountProduct1", totalQuantity);
       updateSubtotalAndTotal();
-    });
+    }
+  });
 
-    // Event listener for quantity increase - Phone 2
-    const countPlus2 = document.getElementById("countPlus2");
-    countPlus2.addEventListener("click", function () {
-      const quantityDigit = textToNumber("countDigit2");
-      const totalQuantity = quantityUpdate(quantityDigit, "countDigit2");
+  // Event listener for quantity increase - Phone 2
+  const countPlus2 = document.getElementById("countPlus2");
+  countPlus2.addEventListener("click", function () {
+    const quantityDigit = textToNumber("countDigit2");
+    const totalQuantity = quantityUpdate(quantityDigit, "countDigit2");
+    const updatedPrice = updatePrices("amountProduct2", totalQuantity);
+    updateSubtotalAndTotal();
+  });
+
+  // Event listener for quantity decrease - Phone 2
+  const countMinus2 = document.getElementById("countMinus2");
+  countMinus2.addEventListener("click", function () {
+    const quantityDigit = textToNumber("countDigit2");
+    if (quantityDigit > 1) {
+      const totalQuantity = quantityUpdate(quantityDigit, "countDigit2", false);
       const updatedPrice = updatePrices("amountProduct2", totalQuantity);
       updateSubtotalAndTotal();
-    });
-
-    //for converting text to number
-    function textToNumber(id) {
-      const takeText = document.getElementById(id).innerText;
-      const takeNumber = parseFloat(takeText);
-      return takeNumber;
     }
+  });
 
-    //calculating and updating the quantity
-    function quantityUpdate(number, id) {
-      const sum = number + 1;
-      document.getElementById(id).innerText = sum;
-      return sum;
-    }
+  //for converting text to number
+  function textToNumber(id) {
+    const takeText = document.getElementById(id).innerText;
+    const takeNumber = parseFloat(takeText);
+    return takeNumber;
+  }
 
-    // Update Subtotal and Total
-    function updateSubtotalAndTotal() {
-      const amountProduct1 = textToNumber("amountProduct1");
-      const amountProduct2 = textToNumber("amountProduct2");
+  //calculating and updating the quantity
+  function quantityUpdate(number, id, increase = true) {
+    const sum = increase ? number + 1 : number - 1;
+    document.getElementById(id).innerText = sum;
+    return sum;
+  }
 
-      const subtotal = amountProduct1 + amountProduct2;
-      const total = subtotal; // Since tax is 0, total is the same as subtotal
+  // Update Subtotal and Total
+  function updateSubtotalAndTotal() {
+    const amountProduct1 = textToNumber("amountProduct1");
+    const amountProduct2 = textToNumber("amountProduct2");
 
-      document.getElementById("subTotal").innerText = subtotal;
-      document.getElementById("total").innerText = total;
-    }
+    const subtotal = amountProduct1 + amountProduct2;
+    const total = subtotal; // Since tax is 0, total is the same as subtotal
+
+    document.getElementById("subTotal").innerText = subtotal.toFixed(2);
+    document.getElementById("total").innerText = total.toFixed(2);
+  }
   </script>
 </html>
