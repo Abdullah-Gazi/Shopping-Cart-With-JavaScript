@@ -67,7 +67,6 @@ body{
     width:500px;
     background-color:white;
     display:flex;
-    justify-content:;
     align-items:center;
     padding:10px 10px;
     margin-top:0px;
@@ -93,4 +92,51 @@ body{
 }
 .btnCheckout:hover{
     background-color:rgb(0, 143, 0);
+}
+
+#countPlus1:hover, #countPlus2:hover, #countMinus1:hover, #countMinus2:hover{
+    cursor: pointer;
+}
+/* adding media query */
+@media (max-width:915px) {
+    .ipnone11Element1 .phone1{
+        width:70px;
+    }
+    .ipnone11Element2 .phone2{
+        width:70px;
+    }
+    h4{
+        font-size:0.7em;
+    }
+    h3{
+        font-size:0.7em
+    }
+    
+    .ipnone11Element1{
+        width:350px;
+    }
+    .ipnone11Element2{
+        width:350px;
+    }
+    .memoElement{
+        width:350px;
+    }
+    .subTaxTotal{
+        padding-left:25px;
+    }
+    .amountOfAll{
+        padding-left:220px;
+    }
+    .btnCheckout{
+        padding:9px 15px;
+        background-color:rgb(0, 160, 0);
+        border:none;
+        color:white;
+        border-radius:3px;
+        font-weight:500;
+        margin-top:10px;
+        margin-left:305px;
+        box-shadow: 0 0 2px gray;
+    }
+
 }
