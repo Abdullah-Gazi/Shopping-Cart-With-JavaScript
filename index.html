@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Shoping Cart</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -12,10 +12,10 @@
       <div class="ipnone11Element1">
         <img class="phone1" src="product-1.png" />
         <h4 class="product1">iPhone 11 128GB Black</h4>
-        <h2>-</h2>
-        <h4 class="countDigit1">1</h4>
-        <h2>+</h2>
-        <h4 class="amount1">$1219</h4>
+        <h2 id="countMinus1">-</h2>
+        <h4 id="countDigit1" class="countDigit1">1</h4>
+        <h2 id="countPlus1">+</h2>
+        <h4 class="amount1">$<span id="amountProduct1">1219</span></h4>
       </div>
     </div>
     <!-- second div for phone -->
@@ -23,10 +23,10 @@
       <div class="ipnone11Element2">
         <img class="phone2" src="product-2.png" />
         <h4 class="product2">iPhone 12 256GB gray</h4>
-        <h2>-</h2>
-        <h4 class="countDigit2">1</h4>
-        <h2>+</h2>
-        <h4 class="amount2">$1219</h4>
+        <h2 id="countMinus2">-</h2>
+        <h4 id="countDigit2" class="countDigit2">1</h4>
+        <h2 id="countPlus2">+</h2>
+        <h4 class="amount2">$<span id="amountProduct2">1311</span></h4>
       </div>
     </div>
     <!-- memo part -->
@@ -38,12 +38,74 @@
           <h4>Total</h4>
         </div>
         <div class="amountOfAll">
-          <h4>$000</h4>
-          <h4>$000</h4>
-          <h4>$000</h4>
+          <h4>$<span id="subTotal">000</span></h4>
+          <h4>$<span id="tax">000</span></h4>
+          <h4>$<span id="total">000</span></h4>
         </div>
       </div>
     </div>
     <button class="btnCheckout">Chekcout</button>
   </body>
+
+  <script>
+    // Original prices
+    const originalPrices = {
+      amountProduct1: 1219,
+      amountProduct2: 1311,
+      // Add more products as needed
+    };
+  
+    // Update prices based on quantity
+    function updatePrices(id, quantity) {
+      const originalPrice = originalPrices[id];
+      const updatedPrice = originalPrice * quantity;
+      document.getElementById(id).innerHTML = updatedPrice;
+      return updatedPrice;
+    }
+  
+    // Event listener for quantity increase - Phone 1
+    const countPlus1 = document.getElementById("countPlus1");
+    countPlus1.addEventListener("click", function () {
+      const quantityDigit = textToNumber("countDigit1");
+      const totalQuantity = quantityUpdate(quantityDigit, "countDigit1");
+      const updatedPrice = updatePrices("amountProduct1", totalQuantity);
+      updateSubtotalAndTotal();
+    });
+  
+    // Event listener for quantity increase - Phone 2
+    const countPlus2 = document.getElementById("countPlus2");
+    countPlus2.addEventListener("click", function () {
+      const quantityDigit = textToNumber("countDigit2");
+      const totalQuantity = quantityUpdate(quantityDigit, "countDigit2");
+      const updatedPrice = updatePrices("amountProduct2", totalQuantity);
+      updateSubtotalAndTotal();
+    });
+  
+    //for converting text to number
+    function textToNumber(id) {
+      const takeText = document.getElementById(id).innerText;
+      const takeNumber = parseFloat(takeText);
+      return takeNumber;
+    }
+  
+    //calculating and updating the quantity
+    function quantityUpdate(number, id) {
+      const sum = number + 1;
+      document.getElementById(id).innerText = sum;
+      return sum;
+    }
+  
+    // Update Subtotal and Total
+    function updateSubtotalAndTotal() {
+      const amountProduct1 = textToNumber("amountProduct1");
+      const amountProduct2 = textToNumber("amountProduct2");
+  
+      const subtotal = amountProduct1 + amountProduct2;
+      const total = subtotal; // Since tax is 0, total is the same as subtotal
+  
+      document.getElementById("subTotal").innerText = subtotal;
+      document.getElementById("total").innerText = total;
+    }
+  </script>
+  
 </html>
